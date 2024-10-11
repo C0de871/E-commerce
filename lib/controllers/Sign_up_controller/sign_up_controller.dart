@@ -1,4 +1,5 @@
 import 'package:e_commerce/repositories/User%20repository/user_repository.dart';
+import 'package:e_commerce/screens/OTP/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,7 @@ class SignUpController extends GetxController {
       signUpErrors.add(error);
     }
   }
+
   void removeSignUpError({required String error}) {
     if (signUpErrors.contains(error)) {
       signUpErrors.remove(error);
@@ -41,6 +43,7 @@ class SignUpController extends GetxController {
       completeProfileErrors.add(error);
     }
   }
+
   void removeCompleteProfileError({required String error}) {
     if (completeProfileErrors.contains(error)) {
       completeProfileErrors.remove(error);
@@ -51,7 +54,6 @@ class SignUpController extends GetxController {
 
   //! Sign Up Method:
   signUp() async {
-
     //! calling the signUp method from the UserRepository:
     signInAccountLoadingState.value = SignUpLoadingState.loading;
     final response = await userRepository.signUp(
@@ -72,7 +74,8 @@ class SignUpController extends GetxController {
       },
       (signUpModel) {
         signInAccountLoadingState.value = SignUpLoadingState.doneWithData;
-        return Get.snackbar('Success', signUpModel.message);
+        Get.snackbar('Success', signUpModel.message);
+        Get.toNamed(OtpScreen.routeName, arguments: signUpEmail.text);
       },
     );
   }

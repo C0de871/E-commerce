@@ -2,7 +2,7 @@ import 'package:e_commerce/core/Custom%20Widget/custom_suffix_icon.dart';
 import 'package:e_commerce/core/Custom%20Widget/default_button.dart';
 import 'package:e_commerce/core/Custom%20Widget/form_error.dart';
 import 'package:e_commerce/core/configurations/constants.dart';
-import 'package:e_commerce/controllers/sign_up_controller.dart';
+import 'package:e_commerce/controllers/Sign_up_controller/sign_up_controller.dart';
 import 'package:e_commerce/screens/Complete%20Profile/complete_profile_screen.dart';
 import 'package:e_commerce/core/configurations/size_config.dart';
 import 'package:flutter/material.dart';
@@ -23,29 +23,31 @@ class _SignUpFormState extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: controller.signUpformKey,
-        child: Column(
-          children: [
-            buildEmailFormField(),
-            SizedBox(height: SizeConfig.relativeHeight(30, context)),
-            buildPasswordFormField(),
-            SizedBox(height: SizeConfig.relativeHeight(30, context)),
-            buildConfirmPasswordFormField(),
-            Obx(() {
-              return FormError(errors: controller.signUpErrors.toList());
-            }),
-            // FormError(errors: controller.signUpErrors),
-            SizedBox(height: SizeConfig.relativeHeight(40, context)),
-            DefaultButton(
-                text: 'Continue',
-                press: () {
-                  if (controller.signUpformKey.currentState!.validate()) {
-                    controller.signUpformKey.currentState!.save();
-                    Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-                  }
-                })
-          ],
-        ));
+      key: controller.signUpformKey,
+      child: Column(
+        children: [
+          buildEmailFormField(),
+          SizedBox(height: SizeConfig.relativeHeight(30, context)),
+          buildPasswordFormField(),
+          SizedBox(height: SizeConfig.relativeHeight(30, context)),
+          buildConfirmPasswordFormField(),
+          Obx(() {
+            return FormError(errors: controller.signUpErrors.toList());
+          }),
+          // FormError(errors: controller.signUpErrors),
+          SizedBox(height: SizeConfig.relativeHeight(40, context)),
+          DefaultButton(
+            text: 'Continue',
+            press: () {
+              if (controller.signUpformKey.currentState!.validate()) {
+                controller.signUpformKey.currentState!.save();
+                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+              }
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   TextFormField buildConfirmPasswordFormField() {

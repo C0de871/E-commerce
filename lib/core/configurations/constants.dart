@@ -53,6 +53,7 @@ const String kshortpasswordError = 'Password must be at least 8 characters long'
 const String kMatchPasswordError = 'Passwords don\'t match';
 const String kfirstNameNullError = 'First Name is required';
 const String kPhoneNumberNullError = 'Phone number is required';
+const String kPhoneNumberLessThan10Error = 'Phone number must be 10 digits long';
 const String kAddressNullError = 'Address is required';
 
 class Constants {}
