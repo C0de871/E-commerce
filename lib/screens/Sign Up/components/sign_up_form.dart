@@ -23,29 +23,31 @@ class _SignUpFormState extends State<SignUpForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: controller.signUpformKey,
-        child: Column(
-          children: [
-            buildEmailFormField(),
-            SizedBox(height: SizeConfig.relativeHeight(30, context)),
-            buildPasswordFormField(),
-            SizedBox(height: SizeConfig.relativeHeight(30, context)),
-            buildConfirmPasswordFormField(),
-            Obx(() {
-              return FormError(errors: controller.signUpErrors.toList());
-            }),
-            // FormError(errors: controller.signUpErrors),
-            SizedBox(height: SizeConfig.relativeHeight(40, context)),
-            DefaultButton(
-                text: 'Continue',
-                press: () {
-                  if (controller.signUpformKey.currentState!.validate()) {
-                    controller.signUpformKey.currentState!.save();
-                    Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-                  }
-                })
-          ],
-        ));
+      key: controller.signUpformKey,
+      child: Column(
+        children: [
+          buildEmailFormField(),
+          SizedBox(height: SizeConfig.relativeHeight(30, context)),
+          buildPasswordFormField(),
+          SizedBox(height: SizeConfig.relativeHeight(30, context)),
+          buildConfirmPasswordFormField(),
+          Obx(() {
+            return FormError(errors: controller.signUpErrors.toList());
+          }),
+          // FormError(errors: controller.signUpErrors),
+          SizedBox(height: SizeConfig.relativeHeight(40, context)),
+          DefaultButton(
+            text: 'Continue',
+            press: () {
+              if (controller.signUpformKey.currentState!.validate()) {
+                controller.signUpformKey.currentState!.save();
+                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+              }
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   TextFormField buildConfirmPasswordFormField() {

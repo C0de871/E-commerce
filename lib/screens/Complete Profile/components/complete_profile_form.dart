@@ -94,8 +94,13 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           // print('empty email');
           return '';
         }
+        if (value.length < 10) {
+          controller.addCompleteProfileError(error: kPhoneNumberLessThan10Error);
+          return '';
+        }
         return null;
       },
+      maxLength: 10,
       keyboardType: TextInputType.number,
       decoration: const InputDecoration(
         labelText: 'Phone Number',
