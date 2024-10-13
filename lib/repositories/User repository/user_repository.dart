@@ -1,15 +1,17 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/database/api/api_consumer.dart';
 import 'package:e_commerce/core/database/api/end_points.dart';
 import 'package:e_commerce/core/errors/exceptions.dart';
 import 'package:e_commerce/models/sign_up_model.dart';
+import 'package:e_commerce/models/verification_model.dart';
 import 'package:get/get.dart';
 
-
-class UserRepository extends GetxService{
+class UserRepository extends GetxService {
   final ApiConsumer api = Get.find();
 
-  //!sign up and handling: 
+  //!sign up and handling:
   Future<Either<String, SignUpModel>> signUp({
     required String firstName,
     required String lastName,
@@ -31,6 +33,24 @@ class UserRepository extends GetxService{
       });
       final signUpModel = SignUpModel.fromJson(response);
       return Right(signUpModel);
+    } on ServerException catch (e) {
+      return Left(e.errorModel.errMessage);
+    } on SocketException catch (e) {
+      return const Left('Unknown error');
+    }
+  }
+
+  Future<Either<String, VerificationModel>> verifyEmail({
+    required String email,
+    required String verificationCode,
+  }) async {
+    try {
+      final response = await api.post(EndPoints.verifyEmail, data: {
+        ApiKeys.email: email,
+        ApiKeys.verificationCode: verificationCode,
+      });
+      final VerificationModel verificationModel = VerificationModel.fromJson(response);
+      return Right(verificationModel);
     } on ServerException catch (e) {
       return Left(e.errorModel.errMessage);
     }

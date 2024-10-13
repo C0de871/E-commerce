@@ -1,5 +1,9 @@
+import 'dart:developer';
+
+import 'package:e_commerce/controllers/Verification%20code/verification_code_controller.dart';
 import 'package:e_commerce/core/configurations/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
@@ -15,12 +19,12 @@ class OnlyBottomCursor extends StatefulWidget {
 }
 
 class _OnlyBottomCursorState extends State<OnlyBottomCursor> {
-  final controller = TextEditingController();
+  VerificationCodeController verificationCodeController = Get.put(VerificationCodeController(), permanent: false);
   final focusNode = FocusNode();
 
   @override
   void dispose() {
-    controller.dispose();
+    // controller.dispose();
     focusNode.dispose();
     super.dispose();
   }
@@ -83,10 +87,13 @@ class _OnlyBottomCursorState extends State<OnlyBottomCursor> {
     );
 
     return Pinput(
+      onCompleted: (value) {
+        // log(ver.text);
+      },
       autofocus: true,
       length: 6,
       pinAnimationType: PinAnimationType.slide,
-      controller: controller,
+      controller: verificationCodeController.codeController,
       focusNode: focusNode,
       defaultPinTheme: defaultPinTheme,
       showCursor: true,

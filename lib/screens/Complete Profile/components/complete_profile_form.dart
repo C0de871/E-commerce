@@ -2,7 +2,7 @@ import 'package:e_commerce/core/Custom%20Widget/custom_suffix_icon.dart';
 import 'package:e_commerce/core/Custom%20Widget/default_button.dart';
 import 'package:e_commerce/core/Custom%20Widget/form_error.dart';
 import 'package:e_commerce/core/configurations/constants.dart';
-import 'package:e_commerce/controllers/Sign_up_controller/sign_up_controller.dart';
+import 'package:e_commerce/controllers/Sign%20up/sign_up_controller.dart';
 import 'package:e_commerce/core/configurations/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -35,7 +35,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           Obx(() => FormError(errors: controller.completeProfileErrors.toList())),
           SizedBox(height: SizeConfig.relativeHeight(40, context)),
           Obx(
-            () => controller.signInAccountLoadingState.value == SignUpLoadingState.loading
+            () {
+              return controller.signInAccountLoadingState.value == SignUpLoadingState.loading
                 ? const CircularProgressIndicator()
                 : DefaultButton(
                     text: 'Sign Up',
@@ -45,7 +46,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                         await controller.signUp();
                       }
                     },
-                  ),
+                  );
+            },
           )
         ],
       ),
