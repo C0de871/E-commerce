@@ -1,9 +1,9 @@
-
 //! endPoints:
 class EndPoints {
   static String baseUrl = 'http://192.168.1.9:8000/api/';
   static String signUp = 'users/register';
   static String logIn = 'users/login';
+  static String verifyEmail = 'users/email-verification';
 }
 
 //! apiKeys:
@@ -20,4 +20,5 @@ class ApiKeys {
   static String firstName = 'First_Name';
   static String lastName = 'Last_Name';
   static String statusCode = 'status_code';
+  static String verificationCode = 'code';
 }

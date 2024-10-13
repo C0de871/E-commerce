@@ -7,22 +7,23 @@ class ServerException implements Exception {
 }
 
 void handleDioExceptions(DioException e) {
+  Map<String, dynamic> jsondata = e.response == null ? {} : e.response!.data;
   switch (e.type) {
     //didn't reach database :
     case DioExceptionType.connectionTimeout:
-      throw ServerException(errorModel: ErrorModel.fromException(e.response!.data));
+      throw ServerException(errorModel: ErrorModel.fromException(jsondata));
     case DioExceptionType.sendTimeout:
-      throw ServerException(errorModel: ErrorModel.fromException(e.response!.data));
+      throw ServerException(errorModel: ErrorModel.fromException(jsondata));
     case DioExceptionType.receiveTimeout:
-      throw ServerException(errorModel: ErrorModel.fromException(e.response!.data));
+      throw ServerException(errorModel: ErrorModel.fromException(jsondata));
     case DioExceptionType.badCertificate:
-      throw ServerException(errorModel: ErrorModel.fromException(e.response!.data));
+      throw ServerException(errorModel: ErrorModel.fromException(jsondata));
     case DioExceptionType.cancel:
-      throw ServerException(errorModel: ErrorModel.fromException(e.response!.data));
+      throw ServerException(errorModel: ErrorModel.fromException(jsondata));
     case DioExceptionType.connectionError:
-      throw ServerException(errorModel: ErrorModel.fromException(e.response!.data));
+      throw ServerException(errorModel: ErrorModel.fromException(jsondata));
     case DioExceptionType.unknown:
-      throw ServerException(errorModel: ErrorModel.fromException(e.response!.data));
+      throw ServerException(errorModel: ErrorModel.fromException(jsondata));
 
     //reach database and database send a error message:
     case DioExceptionType.badResponse:
