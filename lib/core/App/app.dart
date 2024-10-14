@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:e_commerce/core/configurations/routs.dart';
 import 'package:e_commerce/core/configurations/theme.dart';
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
 
 //! Method for initializing services:
 Future initalServices() async {
+  await Get.putAsync(()  => CacheHelperService().init());
   Get.put<ApiConsumer>(DioConsumer(dio: Dio()));
   Get.put<UserRepository>(UserRepository());
-  await Get.putAsync(() => CacheHelperService().init());
 }

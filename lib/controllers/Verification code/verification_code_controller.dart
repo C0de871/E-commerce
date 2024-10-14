@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:e_commerce/repositories/User%20repository/user_repository.dart';
+import 'package:e_commerce/screens/SignIn/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,8 +17,6 @@ class VerificationCodeController extends GetxController {
   //! Verify code method:
   verifyCode() async {
     verfiyCodeLoadingState.value = VerfiyCodeLoadingState.loading;
-    log(email);
-    log(codeController.text);
     final response = await userRepository.verifyEmail(
       email: email,
       verificationCode: codeController.text,
@@ -31,6 +30,7 @@ class VerificationCodeController extends GetxController {
       (verificationModel) {
         verfiyCodeLoadingState.value = VerfiyCodeLoadingState.doneWithData;
         Get.snackbar('Success', verificationModel.message);
+        Get.offNamed(SignInScreen.routeName);
         //todo: navigate to home screen after successful verification
       },
     );

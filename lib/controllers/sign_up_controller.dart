@@ -1,5 +1,5 @@
+
 import 'package:e_commerce/repositories/User%20repository/user_repository.dart';
-import 'package:e_commerce/screens/OTP/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +20,6 @@ class SignUpController extends GetxController {
       signUpErrors.add(error);
     }
   }
-
   void removeSignUpError({required String error}) {
     if (signUpErrors.contains(error)) {
       signUpErrors.remove(error);
@@ -43,19 +42,19 @@ class SignUpController extends GetxController {
       completeProfileErrors.add(error);
     }
   }
-
   void removeCompleteProfileError({required String error}) {
     if (completeProfileErrors.contains(error)) {
       completeProfileErrors.remove(error);
     }
   }
 
-  Rx<SignUpLoadingState> signUpAccountLoadingState = SignUpLoadingState.idle.obs;
+  Rx<SignUpLoadingState> signInAccountLoadingState = SignUpLoadingState.idle.obs;
 
   //! Sign Up Method:
   signUp() async {
+
     //! calling the signUp method from the UserRepository:
-    signUpAccountLoadingState.value = SignUpLoadingState.loading;
+    signInAccountLoadingState.value = SignUpLoadingState.loading;
     final response = await userRepository.signUp(
       firstName: signUpFirstName.text,
       lastName: signUpLastName.text,
@@ -69,13 +68,12 @@ class SignUpController extends GetxController {
     //! choose the right state to emit:
     response.fold(
       (errMassege) {
-        signUpAccountLoadingState.value = SignUpLoadingState.hasError;
+        signInAccountLoadingState.value = SignUpLoadingState.hasError;
         Get.snackbar('Error!', errMassege);
       },
       (signUpModel) {
-        signUpAccountLoadingState.value = SignUpLoadingState.doneWithData;
-        Get.snackbar('Success', signUpModel.message);
-        Get.toNamed(OtpScreen.routeName, arguments: signUpEmail.text);
+        signInAccountLoadingState.value = SignUpLoadingState.doneWithData;
+        return Get.snackbar('Success', signUpModel.message);
       },
     );
   }

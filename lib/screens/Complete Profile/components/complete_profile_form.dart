@@ -36,17 +36,17 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: SizeConfig.relativeHeight(40, context)),
           Obx(
             () {
-              return controller.signInAccountLoadingState.value == SignUpLoadingState.loading
-                ? const CircularProgressIndicator()
-                : DefaultButton(
-                    text: 'Sign Up',
-                    press: () async {
-                      if (controller.completeProfileformKey.currentState!.validate()) {
-                        controller.completeProfileformKey.currentState!.save();
-                        await controller.signUp();
-                      }
-                    },
-                  );
+              return controller.signUpAccountLoadingState.value == SignUpLoadingState.loading
+                  ? const CircularProgressIndicator()
+                  : DefaultButton(
+                      text: 'Sign Up',
+                      press: () async {
+                        if (controller.completeProfileformKey.currentState!.validate()) {
+                          controller.completeProfileformKey.currentState!.save();
+                          await controller.signUp();
+                        }
+                      },
+                    );
             },
           )
         ],

@@ -1,15 +1,19 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/database/api/api_consumer.dart';
 import 'package:e_commerce/core/database/api/end_points.dart';
+import 'package:e_commerce/core/database/cache/cache_helper.dart';
 import 'package:e_commerce/core/errors/exceptions.dart';
+import 'package:e_commerce/models/sign_in_model.dart';
 import 'package:e_commerce/models/sign_up_model.dart';
 import 'package:e_commerce/models/verification_model.dart';
 import 'package:get/get.dart';
 
 class UserRepository extends GetxService {
   final ApiConsumer api = Get.find();
+  final cache = Get.find<CacheHelperService>();
 
   //!sign up and handling:
   Future<Either<String, SignUpModel>> signUp({
@@ -22,7 +26,7 @@ class UserRepository extends GetxService {
     required String address,
   }) async {
     try {
-      final response = await api.post(EndPoints.signUp, data: {
+      final Map<String, dynamic> response = await api.post(EndPoints.signUp, data: {
         ApiKeys.firstName: firstName,
         ApiKeys.lastName: lastName,
         ApiKeys.email: email,
@@ -35,7 +39,31 @@ class UserRepository extends GetxService {
       return Right(signUpModel);
     } on ServerException catch (e) {
       return Left(e.errorModel.errMessage);
-    } on SocketException catch (e) {
+    } on SocketException {
+      return const Left('Unknown error');
+    }
+  }
+
+  Future<Either<String, SignInModel>> signIn({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final Map<String, dynamic> response = await api.post(EndPoints.signIn, data: {
+        ApiKeys.email: email,
+        ApiKeys.password: password,
+      });
+
+      final signInModel = SignInModel.fromJson(response);
+      final token = signInModel.token;
+      cache.saveData(key: CacheKeys.token, value: token);
+      cache.saveData(key: CacheKeys.user, value: jsonEncode(response));
+
+
+      return Right(signInModel);
+    } on ServerException catch (e) {
+      return Left(e.errorModel.errMessage);
+    } on SocketException {
       return const Left('Unknown error');
     }
   }
