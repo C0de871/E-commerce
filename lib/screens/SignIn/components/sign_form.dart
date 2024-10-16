@@ -1,4 +1,4 @@
-import 'package:e_commerce/controllers/Sign%20in/sign_in_controller.dart';
+import 'package:e_commerce/screens/SignIn/logic/sign_in_controller.dart';
 import 'package:e_commerce/core/Custom%20Widget/custom_suffix_icon.dart';
 import 'package:e_commerce/core/Custom%20Widget/default_button.dart';
 import 'package:e_commerce/core/Custom%20Widget/form_error.dart';

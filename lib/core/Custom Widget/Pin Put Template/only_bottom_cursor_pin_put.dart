@@ -1,5 +1,5 @@
 
-import 'package:e_commerce/controllers/Verification%20code/verification_code_controller.dart';
+import 'package:e_commerce/screens/OTP/logic/verification_code_controller.dart';
 import 'package:e_commerce/core/configurations/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

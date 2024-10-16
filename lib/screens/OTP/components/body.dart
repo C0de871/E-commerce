@@ -1,4 +1,4 @@
-import 'package:e_commerce/controllers/Verification%20code/verification_code_controller.dart';
+import 'package:e_commerce/screens/OTP/logic/verification_code_controller.dart';
 import 'package:e_commerce/core/Custom%20Widget/default_button.dart';
 import 'package:e_commerce/core/Custom%20Widget/Pin%20Put%20Template/only_bottom_cursor_pin_put.dart';
 import 'package:e_commerce/core/configurations/constants.dart';

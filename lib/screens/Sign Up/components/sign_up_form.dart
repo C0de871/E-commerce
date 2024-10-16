@@ -2,7 +2,7 @@ import 'package:e_commerce/core/Custom%20Widget/custom_suffix_icon.dart';
 import 'package:e_commerce/core/Custom%20Widget/default_button.dart';
 import 'package:e_commerce/core/Custom%20Widget/form_error.dart';
 import 'package:e_commerce/core/configurations/constants.dart';
-import 'package:e_commerce/controllers/Sign%20up/sign_up_controller.dart';
+import 'package:e_commerce/screens/Complete%20Profile/logic/sign_up_controller.dart';
 import 'package:e_commerce/screens/Complete%20Profile/complete_profile_screen.dart';
 import 'package:e_commerce/core/configurations/size_config.dart';
 import 'package:flutter/material.dart';
