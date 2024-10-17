@@ -4,6 +4,7 @@ import 'package:e_commerce/screens/Login%20Success/login_success_screen.dart';
 import 'package:e_commerce/screens/OTP/otp_screen.dart';
 import 'package:e_commerce/screens/Sign%20Up/sign_up_screen.dart';
 import 'package:e_commerce/screens/SignIn/sign_in_screen.dart';
+import 'package:e_commerce/screens/home/home_screen.dart';
 import 'package:e_commerce/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,4 +17,5 @@ final Map<String, WidgetBuilder> routes = {
   SignUpScreen.routeName: (constext) => const SignUpScreen(),
   CompleteProfileScreen.routeName: (constext) => const CompleteProfileScreen(),
   OtpScreen.routeName: (constext) => const OtpScreen(),
+  HomeScreen.routeName: (constext) => const HomeScreen(),
 };
