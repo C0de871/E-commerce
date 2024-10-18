@@ -17,18 +17,16 @@ class SearchField extends StatelessWidget {
       ),
       child: TextField(
         onChanged: (value) {},
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
           hintText: 'Search Product',
-          prefixIcon: Icon(
-            Icons.search,
-            size: SizeConfig.relativeWidth(22, context),
-            // size: 30,
-          ),
+          prefixIcon: Icon(Icons.search, size: 22
+              // size: 30,
+              ),
           contentPadding: EdgeInsets.symmetric(
-            horizontal: SizeConfig.relativeWidth(20, context),
-            vertical: SizeConfig.relativeWidth(9, context),
+            horizontal: 20,
+            vertical: 9,
           ),
         ),
       ),
