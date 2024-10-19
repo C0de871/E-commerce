@@ -1,4 +1,4 @@
-import 'package:e_commerce/screens/home/components/body.dart';
+import 'package:e_commerce/screens/home/components/catagory_card.dart';
 import 'package:flutter/material.dart';
 
 class Categories extends StatelessWidget {

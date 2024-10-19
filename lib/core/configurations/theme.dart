@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/configurations/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 //! theme:
 ThemeData theme() {
@@ -8,7 +9,7 @@ ThemeData theme() {
     textTheme: textTheme(),
     inputDecorationTheme: inputDecorationTheme(),
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: 'Muli',
+    fontFamily: 'Montserrat',
     visualDensity: VisualDensity.adaptivePlatformDensity,
   );
 }
