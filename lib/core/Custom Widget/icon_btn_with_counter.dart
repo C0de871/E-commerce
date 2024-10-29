@@ -28,18 +28,18 @@ class IconBtnWithCounter extends StatelessWidget {
             // height: SizeConfig.relativeWidth(46, context),
             height:  46,
             width: 46,
-            decoration: BoxDecoration(
-              color: kSecondaryColor.withOpacity(0.1),
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
             ),
             child: Center(
               child: SvgPicture.asset(
+                color: Colors.white,
                 svgSrc,
                 // fit: BoxFit.none,
                 // height: SizeConfig.relativeWidth(22, context),
                 // width: SizeConfig.relativeWidth(22, context),
-                height : 22,
-                width : 22,
+                height : 24,
+                width : 24,
               ),
             ),
           ),
@@ -53,14 +53,15 @@ class IconBtnWithCounter extends StatelessWidget {
                 constraints: const BoxConstraints(
                   // minHeight: SizeConfig.relativeWidth(22, context),
                   // minWidth: SizeConfig.relativeWidth(22, context),
-                  minHeight: 22,
-                  minWidth: 22,
+                  minHeight: 18,
+                  minWidth: 20,
                 ),
                 // height: SizeConfig.relativeWidth(16, context),
                 decoration: BoxDecoration(
-                  color: kPrimaryColor,
+                  // color: kPrimaryColor,
+                  // color: Colors.white,
                   // borderRadius: BorderRadius.circular(SizeConfig.relativeWidth(40, context)),
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(50),
                   border: Border.all(width: 1.5, color: Colors.white),
                 ),
                 child: Center(
@@ -70,7 +71,7 @@ class IconBtnWithCounter extends StatelessWidget {
                       // fontSize: SizeConfig.relativeWidth(9, context),
                       fontSize: 9,
                       // height: SizeConfig.relativeWidth(1.1, context),
-                      height: 1,
+                      // height: 1,
                       color: Colors.white,
                       leadingDistribution: TextLeadingDistribution.even,
                       fontWeight: FontWeight.bold,

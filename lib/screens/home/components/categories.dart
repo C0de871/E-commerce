@@ -13,23 +13,28 @@ class Categories extends StatelessWidget {
       {'icon': 'assets/icons/Gift Icon.svg', 'text': 'Fancy'},
       {'icon': 'assets/icons/Discover.svg', 'text': 'More'},
     ];
-    return LayoutBuilder(builder: (context, constraints) {
-      return SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minWidth: constraints.maxWidth),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(categories.length, (index) {
-                return Row(
-                  children: [
-                    CatagoryCard(icon: categories[index]['icon'], text: categories[index]['text'], press: () {}),
-                  ],
-                );
-              }),
-            ),
-          ));
-    });
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+      ),
+      child: LayoutBuilder(builder: (context, constraints) {
+        return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minWidth: constraints.maxWidth),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(categories.length, (index) {
+                  return Row(
+                    children: [
+                      CatagoryCard(icon: categories[index]['icon'], text: categories[index]['text'], press: () {}),
+                    ],
+                  );
+                }),
+              ),
+            ));
+      }),
+    );
   }
 }
